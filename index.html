@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Adi's Project Vault</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
+  <link rel="manifest" href="manifest.json" />
+  <link rel="icon" href="icon-512.png" />
+  <meta name="theme-color" content="#00f0ff" />
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('sw.js');
+    }
+  </script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Roboto', sans-serif;
+      background: #111;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px 20px;
+      min-height: 100vh;
+    }
+    h1 {
+      font-size: 2em;
+      margin-bottom: 25px;
+      color: #00f0ff;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+      width: 100%;
+      max-width: 800px;
+    }
+    .card {
+      background: #222;
+      border-radius: 12px;
+      padding: 20px;
+      text-align: center;
+      transition: 0.3s;
+      border: 1px solid #333;
+    }
+    .card:hover {
+      transform: scale(1.05);
+      border-color: #00f0ff;
+    }
+    .card a {
+      text-decoration: none;
+      color: #00f0ff;
+      font-weight: bold;
+      display: block;
+      margin-top: 10px;
+    }
+    .footer {
+      margin-top: 40px;
+      font-size: 0.8em;
+      color: #888;
+    }
+  </style>
+</head>
+<body>
+  <h1>Adi's Project Vault 🚀</h1>
+  <div class="grid">
+    <div class="card"><div>🧪 Programming Language</div><a href="https://11YearGoat.github.io/program_lang/" target="_blank">Open</a></div>
+    <div class="card"><div>❌ Tic Tac Toe</div><a href="https://11YearGoat.github.io/Tictactoe/" target="_blank">Play</a></div>
+    <div class="card"><div>🗂️ File Explorer</div><a href="https://11YearGoat.github.io/files/" target="_blank">Browse</a></div>
+    <div class="card"><div>🖱️ CPS Tester</div><a href="https://11YearGoat.github.io/CPSTester/" target="_blank">Test</a></div>
+    <div class="card"><div>🏃‍♂️ Run Adi Run!</div><a href="https://11YearGoat.github.io/runnerGame/" target="_blank">Play</a></div>
+    <div class="card"><div>🖼️ Gallery Page</div><a href="https://11YearGoat.github.io/gallery/" target="_blank">Visit</a></div>
+  </div>
+  <div class="footer">Built with 💖 by 11YearGoat & ChatGPT</div>
+</body>
+</html>
