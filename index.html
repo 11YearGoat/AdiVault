@@ -2,81 +2,102 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Adi's Project Vault</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AdiFrame</title>
   <link rel="manifest" href="manifest.json" />
-  <link rel="icon" href="icon-512.png" />
-  <meta name="theme-color" content="#00f0ff" />
-  <script>
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('sw.js');
-    }
-  </script>
+  <link rel="icon" href="icon-512.png" type="image/png" />
   <style>
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
-    body {
-      font-family: 'Roboto', sans-serif;
-      background: #111;
-      color: #fff;
+    html, body {
+      height: 100%;
+      font-family: 'Segoe UI', sans-serif;
+      background: #f8f8f8;
       display: flex;
       flex-direction: column;
-      align-items: center;
-      padding: 40px 20px;
-      min-height: 100vh;
     }
-    h1 {
-      font-size: 2em;
-      margin-bottom: 25px;
-      color: #00f0ff;
-    }
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 20px;
-      width: 100%;
-      max-width: 800px;
-    }
-    .card {
+
+    #siteSelector {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      padding: 10px;
       background: #222;
-      border-radius: 12px;
-      padding: 20px;
-      text-align: center;
-      transition: 0.3s;
-      border: 1px solid #333;
     }
-    .card:hover {
-      transform: scale(1.05);
-      border-color: #00f0ff;
-    }
-    .card a {
-      text-decoration: none;
-      color: #00f0ff;
+
+    #siteSelector button {
+      padding: 8px 14px;
+      border: none;
+      border-radius: 6px;
+      background: #00ccff;
+      color: black;
       font-weight: bold;
-      display: block;
-      margin-top: 10px;
+      cursor: pointer;
     }
-    .footer {
-      margin-top: 40px;
-      font-size: 0.8em;
-      color: #888;
+
+    iframe {
+      flex-grow: 1;
+      width: 100%;
+      border: none;
+    }
+
+    #toolbar {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      background: #111;
+      color: white;
+      padding: 10px 0;
+      position: sticky;
+      bottom: 0;
+      z-index: 100;
+    }
+
+    #toolbar button {
+      background: none;
+      border: none;
+      color: white;
+      font-size: 20px;
+      cursor: pointer;
+    }
+
+    #toolbar button:hover {
+      color: #00ccff;
     }
   </style>
 </head>
 <body>
-  <h1>Adi's Project Vault 🚀</h1>
-  <div class="grid">
-    <div class="card"><div>🧪 Programming Language</div><a href="https://11YearGoat.github.io/program_lang/" target="_blank">Open</a></div>
-    <div class="card"><div>❌ Tic Tac Toe</div><a href="https://11YearGoat.github.io/Tictactoe/" target="_blank">Play</a></div>
-    <div class="card"><div>🗂️ File Explorer</div><a href="https://11YearGoat.github.io/files/" target="_blank">Browse</a></div>
-    <div class="card"><div>🖱️ CPS Tester</div><a href="https://11YearGoat.github.io/CPStester/" target="_blank">Test</a></div>
-    <div class="card"><div>🏃‍♂️ Run Adi Run!</div><a href="https://11YearGoat.github.io/runnerGame/" target="_blank">Play</a></div>
-    <div class="card"><div>🖼️ Gallery Page</div><a href="https://11YearGoat.github.io/gallery/" target="_blank">Visit</a></div>
+
+  <div id="siteSelector">
+    <button onclick="loadSite('https://11yeargoat.github.io/Tictactoe')">TicTacToe</button>
+    <button onclick="loadSite('https://11yeargoat.github.io/CPStester')">CPS Tester</button>
+    <button onclick="loadSite('https://11yeargoat.github.io/files')">File Viewer</button>
+    <button onclick="loadSite('https://11yeargoat.github.io/runnerGame')">Runner Game</button>
+    <button onclick="loadSite('https://11yeargoat.github.io/gallery')">Gallery</button>
+    <button onclick="loadSite('https://11yeargoat.github.io/program_lang')">Program Lang</button>
   </div>
-  <div class="footer">Built with 💖 by 11YearGoat & ChatGPT</div>
+
+  <iframe id="frame" src="https://11yeargoat.github.io/Tictactoe"></iframe>
+
+  <div id="toolbar">
+    <button onclick="document.getElementById('frame').contentWindow.history.back()">⏪</button>
+    <button onclick="document.getElementById('frame').contentWindow.location.reload()">🔄</button>
+    <button onclick="document.getElementById('frame').contentWindow.history.forward()">⏩</button>
+  </div>
+
+  <script>
+    function loadSite(url) {
+      document.getElementById("frame").src = url;
+    }
+
+    // PWA support
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('sw.js').catch(console.error);
+    }
+  </script>
 </body>
 </html>
